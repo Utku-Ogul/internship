@@ -122,6 +122,9 @@ end
 
 =end
 
+class Flim
+  attr_accessor :title ,:director, :stars 
+end
 
 
 
