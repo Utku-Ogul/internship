@@ -1,0 +1,6 @@
+ayşe,hacettepe
+kerim,odtü
+turan,ankara
+zeynep,bilkent
+kamil,gazi
+oktay,ankara
