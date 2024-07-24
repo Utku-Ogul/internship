@@ -1,11 +1,8 @@
 # internship
 
-git ve ruby deki deneme projelerim olacaktır.
-adfadf
-adf
-adf
-dfa
-df
+
+
+Burda IWallet şirketinde öğrendiğim git ve ruby deki deneme projelerim olacaktır.
 
 1.Library Management System
 
