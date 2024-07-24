@@ -1,15 +1,35 @@
-module Utils
-  def self.clear_screen
-    system("clear") || system("cls")
-  end
+# dosyalardaki ortak noktalar olacak  oda ana ekran menüsü olarak yapabiliriz.
 
-  def self.display_menu
+
+
+module Utils
+  def self.displayMenu
+
     puts "Kütüphane Yönetim Sistemi"
     puts "1. Kitap Ekle"
-    puts "2. Kitapları Listele"
+    puts "2. Kitaplari Listele"
     puts "3. Kitap Ara"
     puts "4. Kitap Sil"
-    puts "5. Çıkış"
-    print "Bir seçenek girin: "
+    puts "5. Çikiş"
+
+    print "Ne yapmak istiyorsunuz: "
+
+    
   end
 end
+
+=begin
+
+self. nın amacı modülü fonksiyonun içinde direkt olarak kullanabilmektir.
+eğer kullanmazsak şöyle bi yol izlememiz gerekir
+
+# Modülün örneğini oluşturmak ve yöntemlere erişmek için:
+utils = Object.new
+utils.extend(Utils)
+
+utils.clear_screen
+utils.display_menu
+
+bunun ana kodun içine yazmamız gerkir orada modülün bir kopyasını oluşturup kullanması için.
+
+=end
