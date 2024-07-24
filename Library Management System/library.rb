@@ -1,80 +1,137 @@
+#burda library de kitap eklem çıkarma listeleme 
+
 require_relative 'utils'
 require_relative 'book'
 
+#bunlar diğer dosyaları entegre etmek içn kullanılıyor.
+
 class Library
   def initialize
-    @books = []
+    @books=[]
   end
 
+  # eklenen kitapları burda deoplayacaz
+
   def add_book(book)
-    @books << book
-    puts "Kitap başarıyla eklendi!"
+    @books << book 
+    puts "kitap eklendi"
   end
+
+  #<< book: << operatörü, @books dizisinin sonuna book nesnesini ekler.
+  #Yani, book nesnesi @books dizisine eklenir.
 
   def list_books
     if @books.empty?
-      puts "Kütüphane boş."
-    else
-      @books.each_with_index do |book, index|
-        puts "#{index + 1}. #{book}"
+      puts "kütüphane boş"
+      #Ruby'de .empty? metodu, bir koleksiyonun (dizi, hash, string, vb.) boş olup olmadığını kontrol etmek için kullanılır. 
+      #Eğer koleksiyon boşsa true, değilse false döner. 
+    else 
+      @books.each do |book|
+        puts book
       end
     end
   end
 
   def find_book_by_title(title)
-    found_books = @books.select { |book| book.title.downcase.include?(title.downcase) }
+    found_books= @books.select{|book| book.title.downcase.include?(title.downcase)}
+   
+
+     
+#   collection.select { |element| condition }
+#   collection: Üzerinde işlem yapılacak koleksiyon (örneğin, bir dizi).
+#   element: Koleksiyonun her bir elemanı.
+#   condition: Elemanın karşılaması gereken koşul.
+
+
+#   title.downcase:
+
+#  title stringinin tüm harflerini küçük harfe dönüştürür.
+#  Örneğin, "Hello World".downcase ifadesi "hello world" sonucunu verir.
+#  Bu, karşılaştırmanın büyük/küçük harf duyarlılığını ortadan kaldırır ve arama işlemini daha esnek hale getirir.
+
+#   include?(other_string):
+
+#  Bu metot, bir stringin başka bir stringi içerip içermediğini kontrol eder.
+#  Eğer içeriyorsa true, içermiyorsa false döner.
+#  Örneğin, "hello world".include?("world") ifadesi true sonucunu verir.
+
+
     if found_books.empty?
-      puts "Kitap bulunamadı."
+      puts "kitap bulunamadi"
     else
-      found_books.each { |book| puts book }
+      found_books.each do |book|
+        puts book
+      end
     end
   end
-
+ 
   def remove_book_by_title(title)
+
     initial_size = @books.size
-    @books.delete_if { |book| book.title.downcase.include?(title.downcase) }
+    @books.delete_if{|book| book.title.downcase.include?(title.downcase)}
+
+
+  #   collection.delete_if { |element| condition }
+
+  # collection: Üzerinde işlem yapılacak koleksiyon (örneğin, bir dizi veya hash).
+  # element: Koleksiyonun her bir elemanı.
+  # condition: Elemanın karşılaması gereken koşul.
+
+
+
     if initial_size == @books.size
-      puts "Kitap bulunamadı."
+      puts "kitap bulunnamadi"
     else
-      puts "Kitap(lar) başarıyla silindi!"
+      puts "kitap başariyla silindi"
     end
   end
 end
 
-library = Library.new
+library=Library.new
+
+=begin
+
+count = 0
 
 loop do
-  Utils.clear_screen
-  Utils.display_menu
-  choice = gets.chomp.to_i
+  puts "Count is: #{count}"
+  count += 1
+  break if count >= 5
+end
+
+puts "Loop is done!"
+
+
+=end
+loop do
+
+  Utils.displayMenu
+  choice= gets.chomp.to_i
 
   case choice
   when 1
-    print "Kitap Başlığı: "
+    print "kitap basliği:: "
     title = gets.chomp
     print "Yazar: "
     author = gets.chomp
-    print "ISBN: "
-    isbn = gets.chomp
-    book = Book.new(title, author, isbn)
+    print "yili:: "
+    year = gets.chomp
+    book = Book.new(title, author, year)
     library.add_book(book)
   when 2
     library.list_books
   when 3
-    print "Aranacak Kitap Başlığı: "
-    title = gets.chomp
+    print "aranacak kitap: "
+    title =gets.chomp
     library.find_book_by_title(title)
   when 4
-    print "Silinecek Kitap Başlığı: "
-    title = gets.chomp
+    print "silinecek kitap: "
+    title=gets.chomp
     library.remove_book_by_title(title)
   when 5
-    puts "Çıkış yapılıyor..."
+    puts "iyi günler"
     break
-  else
-    puts "Geçersiz seçenek."
+
   end
 
-  puts "Devam etmek için Enter'a basın..."
-  gets
 end
