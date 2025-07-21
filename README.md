@@ -2,7 +2,7 @@
 
 
 
-Burda ilk yaz stajım olan IWallet şirketinde öğrendiğim git, ruby ve ruby on rails'deki deneme projelerim olacaktır.
+Burda ilk zorunlu yaz stajım olan IWallet şirketinde öğrendiğim git, ruby ve ruby on rails'deki deneme projelerim olacaktır.
 
 1.Library Management System (ruby)
 2.Task Manager(ruby)
